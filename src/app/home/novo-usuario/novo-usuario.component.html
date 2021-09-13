@@ -40,10 +40,27 @@
              novoUsuarioForm.get('userName')?.errors?.minusculo"
       mensagem="Usuário deve conter apensa letras minúsculas!"
     ></app-mensagem>
+
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('userName')?.errors?.usuarioExistente &&
+             novoUsuarioForm.get('userName')?.touched"
+      mensagem="Usuário já existe!"
+    ></app-mensagem>
   </div>
 
   <div class="form-group mb-4">
     <input type="password" placeholder="Senha" class="form-control" formControlName="password">
+
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('password')?.errors?.required &&
+             novoUsuarioForm.get('password')?.touched"
+      mensagem="Senha obrigatória!"
+    ></app-mensagem>
+
+    <app-mensagem
+      *ngIf="novoUsuarioForm.errors?.senhaIgualUsuario"
+      mensagem="Usuário e senha devem ser diferentes!"
+    ></app-mensagem>
   </div>
 
   <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
