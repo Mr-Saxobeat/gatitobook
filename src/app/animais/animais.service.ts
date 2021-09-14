@@ -18,28 +18,12 @@ export class AnimaisService {
   ) { }
 
   listaDoUsuario(nomeDoUsuario: string): Observable<Animais> {
-    const token = this.tokenService.retornaToken();
-    const headers = new HttpHeaders().append(
-      'x-access-token', token
-    )
     return this.http.get<Animais>(
-      `${API}/${nomeDoUsuario}/photos`,
-      {
-        headers,
-      }
-      );
+      `${API}/${nomeDoUsuario}/photos`);
   }
 
   buscaPorId(id: number): Observable<Animal> {
-    const token = this.tokenService.retornaToken();
-    const headers = new HttpHeaders().append(
-      'x-access-token', token
-    )
     return this.http.get<Animal>(
-      `${API}/photos/${id}`,
-      {
-        headers,
-      }
-    )
+      `${API}/photos/${id}`);
   }
 }
