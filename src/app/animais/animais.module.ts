@@ -9,6 +9,7 @@ import { CartaoModule } from '../componentes/cartao/cartao.module';
 import { GradeFotosAnimaisComponent } from './grade-fotos-animais/grade-fotos-animais.component';
 import { DetalheAnimalComponent } from './detalhe-animal/detalhe-animal.component';
 import { ComentariosComponent } from './detalhe-animal/comentarios/comentarios.component';
+import { NovoAnimalComponent } from './novo-animal/novo-animal.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ComentariosComponent } from './detalhe-animal/comentarios/comentarios.c
     AnimalComponent,
     GradeFotosAnimaisComponent,
     DetalheAnimalComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    NovoAnimalComponent
   ],
   imports: [
     CommonModule,
