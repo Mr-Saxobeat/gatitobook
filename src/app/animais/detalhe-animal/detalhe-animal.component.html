@@ -7,7 +7,7 @@
       ></app-animal>
     </div>
 
-    <div class="col-4">
+    <div class="col-lg-4">
       <small>
         <p class="text-left break-word">
           {{ animal.description }}
@@ -20,6 +20,16 @@
         </i>
         <i (click)="excluir()" class="fa fa-trash-o fa-2x pull-right"></i>
       </small>
+
+      <app-comentarios
+        [id]="animalId"
+        *ngIf="animal.allowComments; else warning"
+      ></app-comentarios>
+      <ng-template
+        #warning
+      >
+        <p>Comentários desativados!</p>
+      </ng-template>
     </div>
   </div>
 </div>
