@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-novo-animal',
@@ -34,9 +35,17 @@ export class NovoAnimalComponent implements OnInit {
     const allowComments = this.formularioAnimal.get('allowComments')?.value ?? false;
     const description = this.formularioAnimal.get('description')?.value ?? '';
 
-    this.animaisService.upload(description, allowComments, this.file).pipe(
-      finalize(() => this.router.navigate(['']))
-    );
+    this.animaisService
+      .upload(description, allowComments, this.file)
+      .pipe(finalize(() => this.router.navigate(['animais'])))
+      .subscribe((event: HttpEvent<any>) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          const total = event.total ?? 1;
+          this.percentualConcluido = Math.round(100 * (event.loaded / total));
+        }
+      },
+        (error) => console.error(error)
+      );
   }
 
   gravaArquivo(arquivo: any): void {
