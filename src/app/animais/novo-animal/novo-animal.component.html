@@ -57,15 +57,13 @@
         >
           Salvar
         </button>
-
         <a [routerLink]="['animais']" class="btn btn-secondary btn-block">Cancelar</a>
-
-        <ng-template #uploadDiv>
-          <div class="text-center display-4">
-            Percentual de upload: {{ percentualConcluido }} %
-          </div>
-        </ng-template>
       </div>
+      <ng-template #uploadDiv>
+        <div class="text-center display-4">
+          Percentual de upload: {{ percentualConcluido }} %
+        </div>
+      </ng-template>
     </div>
   </form>
 </div>
